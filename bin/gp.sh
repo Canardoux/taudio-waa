@@ -18,47 +18,26 @@ echo "------"
 #fi
 
 cd taudio-waa_flutter
-git add .
-git commit -m "$TXT"
-git config pull.rebase false
-git pull
-git push
+bin/gp.sh $TXT
 cd ..
 
 
 cd taudio-waa_blazor
-git add .
-git commit -m "$TXT"
-git config pull.rebase false
-git pull
-git push
+bin/gp.sh $TXT
 cd ..
 
 
 cd taudio-waa_maui
-git add .
-git commit -m "$TXT"
-git config pull.rebase false
-git pull
-git push
+bin/gp.sh $TXT
 cd ..
 
 cd taudio-waa_rn
-git add .
-git commit -m "$TXT"
-git config pull.rebase false
-git pull
-git push
+bin/gp.sh $TXT
 cd ..
 
 cd taudio-waa_ns
-git add .
-git commit -m "$TXT"
-git config pull.rebase false
-git pull
-git push
+bin/gp.sh $TXT
 cd ..
-
 
 
 git add .

@@ -1,0 +1,128 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: "&tau;Dio Media"
+  version: 0.1.5
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+
+# -------------------------------------------------
+
+
+  - title: The &tau;Dio Media Project
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /media_readme.html
+      output: web, pdf
+      type: homepage
+
+    - title: Changelog
+      url: /media_changelog.html
+      output: web, pdf
+      hint: "Log of all changes in The &tau; RTC Project"
+
+    - title: Repository
+      output: web, pdf
+      hint: Repository on Github
+      external_url: https://github.com/canardoux/taudio_media
+
+    - title: Problem Report
+      output: web, pdf
+      hint: Issues on Github
+      external_url: https://github.com/canardoux/taudio_media/issues
+
+      subfolders:
+      - title: Roadmap
+        output: web
+        subfolderitems:
+
+
+        - title: 0 - Project launch
+          output: web, pdf
+          url: /media_milestone_0.html
+          hint: "Project Launch"
+
+        - title: 1 - Toto
+          output: web, pdf
+          url: /media_milestone_1.html
+          hint: "Taudio Streams on Flutter Web"
+
+
+
+
+    - title: Contributions
+      url: /links_contribution.html
+      hint: We need you!
+      output: web, pdf
+
+    - title: License
+      url: /links_license.html
+      hint: The MPL2 License
+      output: web, pdf
+
+
+
+# ----------------------------------------------------------
+
+
+  - title: Guides
+    output: web, pdf
+    folderitems:
+
+    - title: Getting Started
+      url: /media_guides_getting_started.html
+      output: web, pdf
+
+    - title: Installation
+      url: media_guides_install.html
+      output: web, pdf
+
+
+
+
+# ----------------------------------------------------------
+
+
+  - title: Other τDio Projects
+    output: web, pdf
+    folderitems:
+
+    - title: "τDio WAA"
+      url: /waa_readme.html
+      output: web, pdf
+      hint: The τDio WAA Project
+
+    - title: "τDio RTC"
+      url: /rtc_readme.html
+      output: web, pdf
+      hint: The τDio RTC Project
+
+    - title: "τDio Media"
+      url: /media_readme.html
+      output: web, pdf
+      hint: The τDio Media Project
+
+    - title: "τDio Editor"
+      url: /editor_readme.html
+      output: web, pdf
+      hint: The τDio Editor Project
+
+
+
+# --------------------------------------------------------------------

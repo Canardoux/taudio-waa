@@ -1,0 +1,385 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: "&tau;Dio WAA"
+  version: 0.1.5
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+
+# -------------------------------------------------
+
+
+
+  - title: The &tau;Dio Project
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /waa_readme.html
+      output: web, pdf
+      type: homepage
+
+
+    - title: Development Setup
+      url: /tau_dev.html
+      output: web, pdf
+
+
+    - title: Changelog
+      output: web, pdf
+      url: /waa_changelog.html
+      hint: "Log of all changes in The &tau; Project"
+
+
+
+    - title: Repo
+      folderitems:
+      external_url: https://github.com/canardoux/taudio_waa
+      hint: The sources on Github.
+
+
+    - title: Problem Report
+      output: web, pdf
+      hint: Issues on Github
+      external_url: https://github.com/canardoux/taudio_waa/issues
+
+      subfolders:
+      - title: Roadmap
+        output: web
+        subfolderitems:
+
+
+        - title: 0 - Project launch
+          output: web, pdf
+          url: /milestone_0.html
+          hint: "Project Launch"
+
+        - title: 1 - Flutter Web
+          output: web, pdf
+          url: /milestone_1.html
+          hint: "Taudio Streams on Flutter Web"
+
+
+
+    - title: Contributions
+      url: /links_contribution.html
+      hint: We need you!
+      output: web, pdf
+
+    - title: License
+      url: /links_license.html
+      hint: The MPL2 License
+      output: web, pdf
+
+
+
+# ----------------------------------------------------------
+
+
+  - title: Guides
+    output: web, pdf
+    folderitems:
+
+    - title: Getting Started
+      url: /guides_getting_started.html
+      output: web, pdf
+
+    - title: Installation
+      url: /flutter_sound_install.html
+      output: web, pdf
+
+
+
+
+# --------------------------------------------------------------------
+
+
+  - title: Flutter API reference
+    output: web, pdf
+    url: /guides_lock_screen.html
+    folderitems:
+
+
+    - title: introduction
+      url: /flutter_api_intro
+      output: web, pdf
+
+
+      subfolders:
+      - title: WAA Clas
+        output: web
+        subfolderitems:
+
+        - title: AudioBuffer
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioBuffer\/AudioBuffer.html
+          hint: "Project Launch"
+
+        - title: AudioContext
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioBuffer\/AudioContext.html
+          hint: "Project Launch"
+
+        - title: AudioContextOptions
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioBuffer\/AudioContextOptions.html
+          hint: "Project Launch"
+
+        - title: AudioListener
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioListener\/AudioListener.html
+          hint: "Project Launch"
+
+        - title: AudioNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioNode\/AudioNode.html
+          hint: "Project Launch"
+
+        - title: AudioNodeOptions
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioNodeOptions\/AudioNodeOptions.html
+          hint: "Project Launch"
+
+
+        - title: AudioParam
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioParam\/AudioParam.html
+          hint: "Project Launch"
+
+        - title: AudioProcessingEvent
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioProcessingEvent\/AudioProcessingEvent.html
+          hint: "Project Launch"
+
+
+        - title: AudioWorklet
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioProcessingEvent\/AudioWorklet.html
+          hint: "Project Launch"
+
+        - title: AudioWorkletGlobalScope
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioProcessingEvent\/AudioWorkletGlobalScope.html
+          hint: "Project Launch"
+
+        - title: AudioWorkletProcessor
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioProcessingEvent\/AudioWorkletProcessor.html
+          hint: "Project Launch"
+
+        - title: BaseAudioContext
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/BaseAudioContext\/BaseAudioContext.html
+          hint: "Project Launch"
+
+        - title: OfflineAudioCompletionEvent
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/OfflineAudioCompletionEvent\/OfflineAudioCompletionEvent.html
+          hint: "Project Launch"
+
+        - title: OfflineAudioContext
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/OfflineAudioContext\/OfflineAudioContext.html
+          hint: "Project Launch"
+
+        - title: PeriodicWave
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/PeriodicWave\/PeriodicWave.html
+          hint: "Project Launch"
+
+        - title: AudioParamMap
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioParamMap\/AudioParamMap.html
+          hint: "Project Launch"
+
+        - title: AudioTrack
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioTrack\/AudioTrack.html
+          hint: "Project Launch"
+
+        - title: AudioTrackList
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioTrackList\/AudioTrackList.html
+          hint: "Project Launch"
+
+
+
+
+      - title: Nodes
+        output: web
+        subfolderitems:
+
+
+        - title: AnalyserNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AnalyserNode\/AnalyserNode.html
+          hint: "Project Launch"
+
+        - title: AudioBufferSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioBufferSourceNode\/AudioBufferSourceNode.html
+          hint: "Project Launch"
+
+        - title: AudioDestinationNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioDestinationNode\/AudioDestinationNode.html
+          hint: "Project Launch"
+
+        - title: AudioScheduledSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioScheduledSourceNode\/AudioScheduledSourceNode.html
+          hint: "Project Launch"
+
+        - title: AudioWorkletNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/AudioWorkletNode\/AudioWorkletNode.html
+          hint: "Project Launch"
+
+        - title: BiquadFilterNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/BiquadFilterNode\/BiquadFilterNode.html
+          hint: "Project Launch"
+
+        - title: ChannelMergerNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/ChannelMergerNode\/ChannelMergerNode.html
+          hint: "Project Launch"
+
+        - title: ChannelSplitterNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/ChannelSplitterNode\/ChannelSplitterNode.html
+          hint: "Project Launch"
+
+        - title: ConstantSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/ConstantSourceNode\/ConstantSourceNode.html
+          hint: "Project Launch"
+
+        - title: ConvolverNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/ConvolverNode\/ConvolverNode.html
+          hint: "Project Launch"
+
+        - title: DelayNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/DelayNode\/DelayNode.html
+          hint: "Project Launch"
+
+        - title: DynamicsCompressorNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/DynamicsCompressorNode\/DynamicsCompressorNode.html
+          hint: "Project Launch"
+
+        - title: GainNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/GainNode\/GainNode.html
+          hint: "Project Launch"
+
+        - title: IIRFilterNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/IIRFilterNode\/IIRFilterNode.html
+          hint: "Project Launch"
+
+
+        - title: MediaElementAudioSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/MediaElementAudioSourceNode\/MediaElementAudioSourceNode.html
+          hint: "Project Launch"
+
+        - title: MediaStreamAudioDestinationNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/MediaStreamAudioDestinationNode\/MediaStreamAudioDestinationNode.html
+          hint: "Project Launch"
+
+
+        - title: MediaStreamAudioSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/MediaStreamAudioSourceNode\/MediaStreamAudioSourceNode.html
+          hint: "Project Launch"
+
+        - title: OscillatorNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/OscillatorNode\/OscillatorNode.html
+          hint: "Project Launch"
+
+        - title: PannerNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/PannerNode\/PannerNode.html
+          hint: "Project Launch"
+
+        - title: WaveShaperNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/WaveShaperNode\/WaveShaperNode.html
+          hint: "Project Launch"
+
+        - title: StereoPannerNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/StereoPannerNode\/StereoPannerNode.html
+          hint: "Project Launch"
+
+        - title: MediaStreamTrackAudioSourceNode
+          output: web, pdf
+          url: /pages\/taudio-flutter-waa-api\/taudio.web_audio\/MediaStreamTrackAudioSourceNode\/MediaStreamTrackAudioSourceNode.html
+          hint: "Project Launch"
+
+
+
+  - title: Blazor API reference
+    output: web, pdf
+    folderitems:
+
+  - title: MAUI API reference
+    output: web, pdf
+    folderitems:
+
+  - title: React Native API reference
+    output: web, pdf
+    folderitems:
+
+
+
+# ----------------------------------------------------------
+
+
+  - title: Other τDio Projects
+    output: web, pdf
+    folderitems:
+
+    - title: "τDio WAA"
+      url: /waa_readme.html
+      output: web, pdf
+      hint: The τDio WAA Project
+
+    - title: "τDio RTC"
+      url: /rtc_readme.html
+      output: web, pdf
+      hint: The τDio RTC Project
+
+    - title: "τDio Media"
+      url: /media_readme.html
+      output: web, pdf
+      hint: The τDio Media Project
+
+    - title: "τDio Editor"
+      url: /editor_readme.html
+      output: web, pdf
+      hint: The τDio Editor Project
+
+
+
+# --------------------------------------------------------------------
+

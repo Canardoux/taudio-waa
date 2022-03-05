@@ -1,0 +1,325 @@
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the decodeAudioData method from the AudioContext class, for the Dart programming language.">
+  <title>decodeAudioData method - AudioContext class - taudio.web_audio library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">taudio_waa</a></li>
+    <li><a href="../../taudio.web_audio/taudio.web_audio-library.html">taudio.web_audio</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext-class.html">AudioContext</a></li>
+    <li class="self-crumb">decodeAudioData method</li>
+  </ol>
+  <div class="self-name">decodeAudioData</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">decodeAudioData</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../taudio.web_audio/AudioBuffer-class.html">AudioBuffer</a></span>&gt;</span></span>
+<span class="name ">decodeAudioData</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="decodeAudioData-param-audioData"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-typed_data/ByteBuffer-class.html">ByteBuffer</a></span> <span class="parameter-name">audioData</span>, </span></li>
+<li><span class="parameter" id="decodeAudioData-param-successCallback">[<span class="type-annotation">dynamic</span> <span class="parameter-name">successCallback</span>, </span></li>
+<li><span class="parameter" id="decodeAudioData-param-errorCallback"><span class="type-annotation">dynamic</span> <span class="parameter-name">errorCallback</span>]</span></li>
+</ol>)
+
+      <div class="features">override</div>
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;AudioBuffer&gt; decodeAudioData(ByteBuffer audioData,
+    [DecodeSuccessCallback? successCallback,
+    DecodeErrorCallback? errorCallback]) {
+  &#47;&#47; Both callbacks need to be provided if they&#39;re being used.
+  assert((successCallback == null) == (errorCallback == null));
+  &#47;&#47; `decodeAudioData` can exist either in the older callback syntax or the
+  &#47;&#47; newer `Promise`-based syntax that also accepts callbacks. In the former,
+  &#47;&#47; we synthesize a `Future` to be consistent.
+  &#47;&#47; For more details:
+  &#47;&#47; https:&#47;&#47;developer.mozilla.org&#47;en-US&#47;docs&#47;Web&#47;API&#47;BaseAudioContext&#47;decodeAudioData
+  &#47;&#47; https:&#47;&#47;www.w3.org&#47;TR&#47;webaudio&#47;#dom-baseaudiocontext-decodeaudiodata
+  final completer = Completer&lt;Object&gt;();
+  var errorInCallbackIsNull = false;
+
+  void success(AudioBuffer decodedData) {
+    completer.complete(decodedData);
+    successCallback!.call(decodedData);
+  }
+
+  final nullErrorString =
+      &#39;[AudioContext.decodeAudioData] completed with a null error.&#39;;
+
+  void error(DomException? error) {
+    &#47;&#47; Safari has a bug where it may return null for the error callback. In
+    &#47;&#47; the case where the Safari version still returns a `Promise` and the
+    &#47;&#47; error is not null after the `Promise` is finished, the error callback
+    &#47;&#47; is called instead in the `Promise`&#39;s `catch` block. Otherwise, and in
+    &#47;&#47; the case where a `Promise` is not returned by the API at all, the
+    &#47;&#47; callback never gets called (for backwards compatibility, it can not
+    &#47;&#47; accept null). Instead, the `Future` completes with a custom string,
+    &#47;&#47; indicating that null was given.
+    &#47;&#47; https:&#47;&#47;github.com&#47;mdn&#47;webaudio-examples&#47;issues&#47;5
+    if (error != null) {
+      &#47;&#47; Note that we `complete` and not `completeError`. This is to make sure
+      &#47;&#47; that errors in the `Completer` are not thrown if the call gets back
+      &#47;&#47; a `Promise`.
+      completer.complete(error);
+      errorCallback!.call(error);
+    } else {
+      completer.complete(nullErrorString);
+      errorInCallbackIsNull = true;
+    }
+  }
+
+  var decodeResult;
+  if (successCallback == null) {
+    decodeResult =
+        JS(&quot;creates:AudioBuffer;&quot;, &quot;#.decodeAudioData(#)&quot;, this, audioData);
+  } else {
+    decodeResult = JS(
+        &quot;creates:AudioBuffer;&quot;,
+        &quot;#.decodeAudioData(#, #, #)&quot;,
+        this,
+        audioData,
+        convertDartClosureToJS(success, 1),
+        convertDartClosureToJS(error, 1));
+  }
+
+  if (decodeResult != null) {
+    &#47;&#47; Promise-based syntax.
+    return promiseToFuture&lt;AudioBuffer&gt;(decodeResult).catchError((error) {
+      &#47;&#47; If the error was null in the callback, but no longer is now that the
+      &#47;&#47; `Promise` is finished, call the error callback. If it&#39;s still null,
+      &#47;&#47; throw the error string. This is to handle the aforementioned bug in
+      &#47;&#47; Safari.
+      if (errorInCallbackIsNull) {
+        if (error != null) {
+          errorCallback?.call(error);
+        } else {
+          throw nullErrorString;
+        }
+      }
+      throw error;
+    });
+  }
+
+  &#47;&#47; Callback-based syntax. We use the above completer to synthesize a
+  &#47;&#47; `Future` from the callback values. Since we don&#39;t use `completeError`
+  &#47;&#47; above, `then` is used to simulate an error.
+  return completer.future.then((value) {
+    if (value is AudioBuffer) return value;
+    throw value;
+  });
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">taudio_waa</a></li>
+  <li><a href="../../taudio.web_audio/taudio.web_audio-library.html">taudio.web_audio</a></li>
+  <li><a href="../../taudio.web_audio/AudioContext-class.html">AudioContext</a></li>
+  <li class="self-crumb">decodeAudioData method</li>
+</ol>
+
+
+    <h5>AudioContext class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../taudio.web_audio/AudioContext-class.html#constructors">Constructors</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/AudioContext.html">AudioContext</a></li>
+
+
+    <li class="section-title">
+      <a href="../../taudio.web_audio/AudioContext-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../../taudio.web_audio/AudioContext/baseLatency.html">baseLatency</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/currentTime.html">currentTime</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/destination.html">destination</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/listener.html">listener</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/sampleRate.html">sampleRate</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/state.html">state</a></li>
+
+    <li class="section-title"><a href="../../taudio.web_audio/AudioContext-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/close.html">close</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createAnalyser.html">createAnalyser</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createBiquadFilter.html">createBiquadFilter</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createBuffer.html">createBuffer</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createBufferSource.html">createBufferSource</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createChannelMerger.html">createChannelMerger</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createChannelSplitter.html">createChannelSplitter</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createConstantSource.html">createConstantSource</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createConvolver.html">createConvolver</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createDelay.html">createDelay</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createDynamicsCompressor.html">createDynamicsCompressor</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/createGain.html">createGain</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createIirFilter.html">createIirFilter</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createMediaElementSource.html">createMediaElementSource</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createMediaStreamDestination.html">createMediaStreamDestination</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createMediaStreamSource.html">createMediaStreamSource</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createOscillator.html">createOscillator</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createPanner.html">createPanner</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createPeriodicWave.html">createPeriodicWave</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/createScriptProcessor.html">createScriptProcessor</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createStereoPanner.html">createStereoPanner</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/createWaveShaper.html">createWaveShaper</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/decodeAudioData.html">decodeAudioData</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/getOutputTimestamp.html">getOutputTimestamp</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li class="inherited"><a href="../../taudio.web_audio/BaseAudioContext/resume.html">resume</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/suspend.html">suspend</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../../taudio.web_audio/AudioContext-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+    <li class="section-title"><a href="../../taudio.web_audio/AudioContext-class.html#static-properties">Static properties</a></li>
+    <li><a href="../../taudio.web_audio/AudioContext/supported.html">supported</a></li>
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    taudio_waa
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

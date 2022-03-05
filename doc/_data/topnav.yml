@@ -1,0 +1,50 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+
+    - title: WAA
+      folderitems:
+      url: /waa_readme.html
+      hint: The README for &tau;Dio WAA.
+
+    - title: RTC
+      folderitems:
+      url: /rtc_readme.html
+      hint: The README for &tau;Dio RTC.
+
+    - title: Media
+      folderitems:
+      url: /media_readme.html
+      hint: The README for &tau;Dio Media.
+
+    - title: Editor
+      folderitems:
+      url: /editor_readme.html
+      hint: The README for &tau;Dio Editor.
+
+ 
+    - title: News
+      url: /news.html
+      hint: What's new pussycat ?
+
+
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+
+
+    - title: Sharing
+      folderitems:
+
+
+        - title: Element
+          hint: "Free and Open Source. Based on Open Source Protocols"
+          external_url: https://app.element.io/#/room/#tau:matrix.org
+
+        - title: Discord
+          hint: "Unfortunately not Open Source"
+          external_url: https://discord.gg/MWNfvaTHmQ
+
+

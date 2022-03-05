@@ -11,44 +11,56 @@
 #        gsed -i  "s/^\( *version: \).*/\1$VERSION/"                                             doc/_data/sidebars/mydoc_sidebar.yml
 #fi
 
+
 cp README.md doc/README.md
 
-rm -rf doc/pages/waa-doc
-rm -rf doc/pages/rtc-doc
-rm -rf doc/pages/editor-doc
-rm -rf doc/pages/media-doc
+cd taudio-waa_flutter
+bin/doc.sh
+cd ..
 
-mkdir -p doc/pages/waa-doc
-mkdir -p doc/pages/rtc-doc
-mkdir -p doc/pages/editor-doc
-mkdir -p doc/pages/media-doc
+cd taudio-waa_blazor
+bin/doc.sh
+cd ..
 
-cp -a taudio_waa/doc/* doc/pages/waa-doc
-cp -a taudio_rtc/doc/* doc/pages/rtc-doc
-cp -a taudio_editor/doc/* doc/pages/editor-doc
-cp -a taudio_media/doc/* doc/pages/media-doc
+cd taudio-waa_maui
+bin/doc.sh
+cd ..
 
-cp -a taudio_waa/doc/waa_sidebar.yml doc/_data/sidebars
-cp -a taudio_rtc/doc/rtc_sidebar.yml doc/_data/sidebars
-cp -a taudio_editor/doc/editor_sidebar.yml doc/_data/sidebars
-cp -a taudio_media/doc/media_sidebar.yml doc/_data/sidebars
+cd taudio-waa_rn
+bin/doc.sh
+cd ..
 
-#cp taudio_waa/README.md doc/pages/waa-doc
-#cp taudio_waa/CHANGELOG_doc/pages/waa-doc
+cd taudio-waa_ns
+bin/doc.sh
+cd ..
+
+rm -rf doc/pages/flutter-doc
+rm -rf doc/pages/blazor-doc
+rm -rf doc/pages/maui-doc
+rm -rf doc/pages/rn-doc
+rm -rf doc/pages/ns-doc
+
+mkdir -p doc/pages/flutter-doc
+mkdir -p doc/pages/blazor-doc
+mkdir -p doc/pages/maui-doc
+mkdir -p doc/pages/rn-doc
+mkdir -p doc/pages/ns-doc
+
+cp -a taudio-waa_flutter/doc/* doc/pages/flutter-doc
+cp -a taudio-waa_blazor/doc/* doc/pages/blazor-doc
+cp -a taudio-waa_maui/doc/* doc/pages/maui-doc
+cp -a taudio-waa_rn/doc/* doc/pages/rn-doc
+cp -a taudio-waa_ns/doc/* doc/pages/ns-doc
 
 
+cp -a taudio-waa_flutter/doc/waa_flutter_sidebar.yml doc/_data/sidebars
+cp -a taudio-waa_blazor/doc/waa_blazor_sidebar.yml doc/_data/sidebars
+cp -a taudio-waa_maui/doc/waa_maui_sidebar.yml doc/_data/sidebars
+cp -a taudio-waa_rn/doc/waa_rn_sidebar.yml doc/_data/sidebars
+cp -a taudio-waa_ns/doc/waa_ns_sidebar.yml doc/_data/sidebars
 
-echo "dart doc"
-cd taudio_waa/waa_flutter
-rm -rf doc 2>/dev/null
-export PATH="$PATH:/opt/flutter/bin"
-export FLUTTER_ROOT=/opt/flutter
-flutter clean
-flutter pub get
-flutter pub global activate dartdoc
-flutter pub global run dartdoc .
-cd ../..
 
+exit 0
 
 cd doc
 echo "patch css for Jekyll compatibility"
