@@ -17,28 +17,6 @@ echo "------"
 #        gsed -i  "s/^\( *version: \).*/\1$VERSION/"                                             doc/_data/sidebars/mydoc_sidebar.yml
 #fi
 
-cd taudio-waa_flutter
-bin/gp.sh $TXT
-cd ..
-
-
-cd taudio-waa_blazor
-bin/gp.sh $TXT
-cd ..
-
-
-cd taudio-waa_maui
-bin/gp.sh $TXT
-cd ..
-
-cd taudio-waa_rn
-bin/gp.sh $TXT
-cd ..
-
-cd taudio-waa_ns
-bin/gp.sh $TXT
-cd ..
-
 
 git add .
 git commit -m "$TXT"

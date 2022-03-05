@@ -13,3 +13,9 @@
 [submodule "taudio-waa_flutter"]
 	path = taudio-waa_flutter
 	url = git@github.com:Canardoux/taudio-waa_flutter.git
+[submodule "taudio-waa_examples"]
+	path = taudio-waa_examples
+	url = git@github.com:Canardoux/taudio-waa_examples
+[submodule "taudio-waa_solar2d"]
+	path = taudio-waa_solar2d
+	url = git@github.com:Canardoux/taudio-waa_solar2d

@@ -34,6 +34,15 @@ cd taudio-waa_ns
 bin/doc.sh
 cd ..
 
+cd taudio-waa_examples
+bin/doc.sh
+cd ..
+
+cd taudio-waa_solar2d
+bin/doc.sh
+cd ..
+
+
 rm -rf doc/pages/flutter-doc
 rm -rf doc/pages/blazor-doc
 rm -rf doc/pages/maui-doc
@@ -60,22 +69,6 @@ cp -a taudio-waa_rn/doc/waa_rn_sidebar.yml doc/_data/sidebars
 cp -a taudio-waa_ns/doc/waa_ns_sidebar.yml doc/_data/sidebars
 
 
-exit 0
-
-cd doc
-echo "patch css for Jekyll compatibility"
-gsed -i  "0,/^  overflow: hidden;$/s//overflow: auto;/"  pages/taudio-flutter-waa-api/static-assets/styles.css
-gsed -i  "s/^  background-color: inherit;$/  background-color: #2196F3;/" pages/taudio-flutter-waa-api/static-assets/styles.css
-
-echo "Add Front matter on top of dartdoc pages"
-for f in $(find pages/taudio-flutter-waa-api -name '*.html' )
-do
-        gsed -i  "1i ---" $f
-        gsed -i  "1i ---" $f
-        gsed -i  "/^<script src=\"https:\/\/ajax\.googleapis\.com\/ajax\/libs\/jquery\/3\.2\.1\/jquery\.min\.js\"><\/script>$/d" $f
-done
-cd ..
-
 
 
 cd doc
@@ -89,24 +82,13 @@ if [ $? -ne 0 ]; then
     echo "Error"
     exit -1
 fi
-#cd _site
-#ln -s readme.html index.html
-
 cd ..
-
-
-
-cd doc/_site
-echo "patch css for Jekyll compatibility"
-gsed -i  "0,/^  overflow: hidden;$/s//overflow: auto;/"  pages/taudio-flutter-waa-api/static-assets/styles.css
-gsed -i  "s/^  background-color: inherit;$/  background-color: #2196F3;/" pages/taudio-flutter-waa-api/static-assets/styles.css
-cd ../..
 
 
 
 echo "Symbolic links"
 cd doc/_site
-for dir in $(find pages/taudio-flutter-waa-api -type d)
+for dir in $(find pages/flutter-doc/api -type d)
 do
         rel=`realpath --relative-to=$dir .`
         for d in */ ; do
@@ -115,8 +97,12 @@ do
 done
 cd ../..
 
-rm -rf /tmp/toto.tgz 2>/dev/null
+
+
+
+
+rm -rf /tmp/zozo.tgz 2>/dev/null
 cd doc/_site
-tar czf /tmp/toto.tgz *
-scp -P7822 /tmp/toto.tgz canardoux@canardoux.xyz:/tmp/toto.tgz
-ssh -p7822 canardoux@canardoux.xyz "rm -rf /var/www/vhosts/canardoux.xyz/taudio.canardoux.xyz/*; cd /var/www/vhosts/canardoux.xyz/taudio.canardoux.xyz; tar xzf /tmp/toto.tgz"
+tar czf /tmp/zozo.tgz *
+scp -P7822 /tmp/zozo.tgz thetatau@thetatau.xyz:/tmp/zozo.tgz
+ssh -p7822 thetatau@thetatau.xyz "rm -rf /var/www/vhosts/thetatau.xyz/taudio-waa.thetatau.xyz/*; cd /var/www/vhosts/thetatau.xyz/taudio-waa.thetatau.xyz; tar xzf /tmp/zozo.tgz"
