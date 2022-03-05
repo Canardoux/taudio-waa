@@ -1,0 +1,15 @@
+[submodule "taudio-waa_blazor"]
+	path = taudio-waa_blazor
+	url = git@github.com:Canardoux/taudio-waa_blazor.git
+[submodule "taudio-waa_maui"]
+	path = taudio-waa_maui
+	url = git@github.com:Canardoux/taudio-waa_maui.git
+[submodule "taudio-waa_rn"]
+	path = taudio-waa_rn
+	url = git@github.com:Canardoux/taudio-waa_rn.git
+[submodule "taudio-waa_ns"]
+	path = taudio-waa_ns
+	url = git@github.com:Canardoux/taudio-waa_ns.git
+[submodule "taudio-waa_flutter"]
+	path = taudio-waa_flutter
+	url = git@github.com:Canardoux/taudio-waa_flutter.git
