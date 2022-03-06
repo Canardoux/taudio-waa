@@ -18,31 +18,31 @@ echo "------"
 #fi
 
 cd taudio-waa_blazor
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_examples
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_flutter
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_maui
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_ns
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_rn
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 cd taudio-waa_solar2d
-bin/gp.sh
+bin/gp.sh "$TXT"
 cd ..
 
 
