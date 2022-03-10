@@ -45,6 +45,10 @@ cd taudio-waa_solar2d
 bin/gp.sh "$TXT"
 cd ..
 
+cd taudio-waa_native
+bin/gp.sh "$TXT"
+cd ..
+
 
 git add .
 git commit -m "$TXT"

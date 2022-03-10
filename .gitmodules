@@ -19,3 +19,6 @@
 [submodule "taudio-waa_solar2d"]
 	path = taudio-waa_solar2d
 	url = git@github.com:Canardoux/taudio-waa_solar2d
+[submodule "taudio-waa_native"]
+	path = taudio-waa_native
+	url = git@github.com:Canardoux/taudio-waa_native.git
